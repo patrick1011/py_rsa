@@ -1,6 +1,6 @@
 from math import gcd
 
-from src.rsa.key_generator.extended_euclidian import extended_euclidian
+from src.key_generator.extended_euclidian import extended_euclidian
 
 
 def gen_keys(p, q):

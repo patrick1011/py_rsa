@@ -1,6 +1,6 @@
-from src.rsa.key_generator.keys import gen_keys
-from src.rsa.key_generator.log_keys import log_keys
-from src.rsa.key_generator.primes import gen_prime
+from src.key_generator.keys import gen_keys
+from src.key_generator.log_keys import log_keys
+from src.key_generator.primes import gen_prime
 
 
 def main():
@@ -15,6 +15,9 @@ def main():
     Bart Preneel (ISBN: 8601406549616).
 
     Primes are 512 bits.
+
+    Args:
+        None, no env variables required.
 
     Side Effects:
         Prints public and private exponents and modulus to console.  To
