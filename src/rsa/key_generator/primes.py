@@ -3,26 +3,21 @@ from random import randint
 from src.rsa.constants import (RSA_PRIME_SIZE, SECURITY_PARAMETER)
 
 
-def generate_rsa_primes(*args):
-    return (
-        prime_generator(),
-        prime_generator()
-    )
+def gen_prime(size=RSA_PRIME_SIZE, sec=SECURITY_PARAMETER):
+    while True:
+        c = randint(1, 2**size)
+        is_prime = fermat_prime_test(c, sec)
+        if is_prime:
+            return c
 
 
-def prime_generator():
-    candidate = randint(1, 2**RSA_PRIME_SIZE)
-    is_prime = fermat_primality_test(candidate, SECURITY_PARAMETER)
-    return candidate if is_prime else prime_generator()
-
-
-def fermat_primality_test(candidate, security_parameter):
-    if candidate == 2:
+def fermat_prime_test(c, sec):
+    if c == 2:
         return True
-    if candidate % 2 == 0:
+    if c % 2 == 0:
         return False
-    for i in range(security_parameter):
-        a = randint(1, candidate-1)
-        if pow(a, candidate-1, candidate) != 1:
+    for i in range(sec):
+        a = randint(1, c-1)
+        if pow(a, c-1, c) != 1:
             return False
     return True

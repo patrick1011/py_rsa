@@ -11,10 +11,3 @@ def extended_euclidian(b, n):
         b = n
         n = b % n
     return prev_y
-
-
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
