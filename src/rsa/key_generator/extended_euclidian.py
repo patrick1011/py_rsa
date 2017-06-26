@@ -1,13 +1,22 @@
-def extended_euclidian(b, n):
-    prev_x, x, prev_y, y = 1, 0, 0, 1
-    while n != 0:
-        q = b // n
+def extended_euclidian(a, b):
+    """Extended euclidian algorithm
 
-        x = prev_x - q * x
-        prev_x = x
-        y = prev_y - q * y
-        prev_y = y
+    Given a and b computes x and y such that:
 
-        b = n
-        n = b % n
-    return prev_y
+    a*x + b*y = gcd(a,b)
+
+    Args:
+        a (int)
+        b (int)
+
+    Returns:
+        y from above
+    """
+
+    x, next_x, y, next_y = 1, 0, 0, 1
+    while b != 0:
+        q = a // b
+        next_x, x = x - q * next_x, next_x
+        next_y, y = y - q * next_y, next_y
+        a, b = b, a % b
+    return y

@@ -1,9 +1,20 @@
 from random import randint
 
-from src.rsa.constants import (RSA_PRIME_SIZE, SECURITY_PARAMETER)
 
+def gen_prime(size=512, sec=1000):
+    """Generates prime by creating random number and checking primality
+    with fermat test.
 
-def gen_prime(size=RSA_PRIME_SIZE, sec=SECURITY_PARAMETER):
+    Args:
+        size (int): bit-size of prime (defualt 512)
+        sec (int): security parameter for fermat primality test
+
+    Primes are approx 512 bits by default.
+
+    Returns:
+        (int) Prime
+    """
+
     while True:
         c = randint(1, 2**size)
         is_prime = fermat_prime_test(c, sec)
@@ -12,6 +23,20 @@ def gen_prime(size=RSA_PRIME_SIZE, sec=SECURITY_PARAMETER):
 
 
 def fermat_prime_test(c, sec):
+    """Fermat's prime test for PROBABALISTIC test of primality
+
+    Args:
+        c (int): candidate prime
+        sec (int): security parameter
+
+    Uses Fermat's little theorem which says if c is prime a^(c-1) = 1 mod c
+    for a not divisible by c. Algorithm tests above equality sec times for
+    random a's.
+
+    Returns:
+        bool indicating primality of c
+    """
+
     if c == 2:
         return True
     if c % 2 == 0:
