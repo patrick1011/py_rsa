@@ -10,12 +10,6 @@ def custom400(error):
     return response, 400
 
 
-@blueprint.app_errorhandler(401)
-def custom401(error):
-    response = jsonify({'message': error.description})
-    return response, 401
-
-
 @blueprint.app_errorhandler(404)
 def custom404(error):
     response = jsonify({'message': error.description})

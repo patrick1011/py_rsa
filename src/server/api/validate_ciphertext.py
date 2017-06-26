@@ -1,7 +1,7 @@
 from flask import abort
 
 
-def validate_incoming_ciphertext(body):
+def validate_ciphertext(body):
     """Validates incoming request body to ensure well-formed ciphertext.
 
     Returns 400 if:
@@ -22,4 +22,4 @@ def validate_incoming_ciphertext(body):
 
     if (type(cipher_text) is not int):
         return abort(400, 'malformed body, expecting int cipher_text.')
-    return
+    return cipher_text

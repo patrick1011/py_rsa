@@ -1,8 +1,8 @@
 from flask import Flask
 import os
 
-import src.api.error_handlers as error_handlers
-import src.api.process_incoming as routes
+import src.server.api.error_handlers as error_handlers
+import src.server.api.process_incoming as routes
 
 app = Flask(__name__)
 
@@ -17,7 +17,11 @@ if __name__ == "__main__":
         PUBLIC_EXPONENT (int): Public exponent used to decrypt.
         MODULUS (int): Modulus used to decrypt
 
-    PUBLIC_EXPONENT and MODULUS can be generated using the key generator.
+    Returns:
+        Outputs incoming messages to message_stream.txt.
+
+    PUBLIC_EXPONENT and MODULUS generated using the key generator.
     """
+    if environs not defined raise exception
 
     app.run(host='0.0.0.0', port=int(os.environ.get(key='PORT')))

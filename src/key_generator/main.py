@@ -14,10 +14,7 @@ def main():
     Textbook for Students and Practitioners by Christof Paar, Jan Pelzl,
     Bart Preneel (ISBN: 8601406549616).
 
-    Primes are 512 bits.
-
-    Args:
-        None, no env variables required.
+    Primes are 512 bit.
 
     Side Effects:
         Prints public and private exponents and modulus to console.  To

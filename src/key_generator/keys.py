@@ -7,8 +7,8 @@ def gen_keys(p, q):
     """Generates keys for RSA encryption
 
     Args:
-        p (int): prime
-        q (int): prime
+        p (int): prime1
+        q (int): prime2
 
     Returns:
         Public and private exponents and modulus.
