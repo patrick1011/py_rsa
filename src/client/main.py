@@ -1,6 +1,6 @@
-from src.client.encrypt import encrypt
-from src.client.read_plaintext import read_plaintext
-from src.client.send import send
+from src.client.services.encrypt import encrypt
+from src.client.services.read_plaintext import read_plaintext
+from src.client.services.send import send
 
 
 def main():

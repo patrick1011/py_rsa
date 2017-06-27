@@ -9,7 +9,7 @@ from src.server.log_message import log_message
 blueprint = Blueprint('routes', __name__)
 
 
-@blueprint.route('/message', methods=['POST'])
+@blueprint.route('/', methods=['POST'])
 def process_incoming_ciphertext():
     """Route to process incoming message.  Validates, decrypts, and saves
     incoming message.
@@ -25,8 +25,7 @@ def process_incoming_ciphertext():
 
     request_body = request.get_json(force=True)
     validated_ciphertext = validate_ciphertext(request_body)
-
     plaintext = decrypt(validated_ciphertext)
     log_message(plaintext)
 
-    return 200
+    return "message received successfully", 200

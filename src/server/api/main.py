@@ -1,7 +1,7 @@
 from flask import Flask
 import os
 
-import src.server.api.error_handlers as error_handlers
+import src.server.api.infrastructure.error_handlers as error_handlers
 import src.server.api.process_incoming as routes
 
 app = Flask(__name__)
@@ -22,6 +22,4 @@ if __name__ == "__main__":
 
     PUBLIC_EXPONENT and MODULUS generated using the key generator.
     """
-    if environs not defined raise exception
-
     app.run(host='0.0.0.0', port=int(os.environ.get(key='PORT')))
