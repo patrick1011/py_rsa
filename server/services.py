@@ -40,11 +40,12 @@ def decrypt(ciphertext, private_exponent, modulus, not_unicode_handler):
     int_plaintext = pow(ciphertext, private_exponent, modulus)
 
     _bytes = (modulus.bit_length() + 7) // 8
-    byte_plaintext = int_plaintext.to_bytes(_bytes, 'big').decode()
+    byte_plaintext = int_plaintext.to_bytes(_bytes, 'big')
 
     try:
         plaintext_string = byte_plaintext.decode()
-    except UnicodeDecodeError as e:
-        return not_unicode_handler()
+    except UnicodeDecodeError:
+        message = 'Plaintext not unicode, aborted decryption.'
+        return not_unicode_handler(message)
 
     return plaintext_string

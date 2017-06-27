@@ -1,11 +1,10 @@
 from flask import Blueprint
 from flask import request
 
-from server.api.validate_ciphertext import validate_ciphertext as validate
-from server.decrypt import decrypt
-
-from server.helpers.abort_wrapper import abort_wrapper
-from server.message_log import message_log
+from server.api.helpers.abort_wrapper import abort_wrapper
+from server.api.helpers.validate_request import validate_request as validate
+from server.services import decrypt
+from server.services import log_message
 
 from server.settings import PRIVATE_EXPONENT, MODULUS
 
@@ -18,8 +17,7 @@ def process_incoming_ciphertext():
     incoming message.
 
     Args:
-        Uses global flask request object. Request can be aborted anywhere using
-        flask/abort.
+
 
     Variables required from settings.py:
         PUBLIC_EXPONENT (int): Public exponent used to decrypt.
@@ -35,11 +33,11 @@ def process_incoming_ciphertext():
     validated_ciphertext = validate(body=request_body,
                                     invalid_handler=abort_wrapper(400))
 
-    plaintext = decrypt(ciphetext=validated_ciphertext,
+    plaintext = decrypt(ciphertext=validated_ciphertext,
                         private_exponent=PRIVATE_EXPONENT,
                         modulus=MODULUS,
                         not_unicode_handler=abort_wrapper(400))
 
-    message_log(plaintext)
+    log_message(plaintext)
 
     return "message received successfully", 200

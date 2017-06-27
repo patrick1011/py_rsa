@@ -1,7 +1,4 @@
-from flask import abort
-
-
-def validate_ciphertext(body, invalid_handler):
+def validate_request(body, invalid_handler):
     """Validates incoming request body to ensure well-formed ciphertext.
 
     Calls invalid_handler if:
@@ -10,17 +7,14 @@ def validate_ciphertext(body, invalid_handler):
 
     Args:
         body (dict): Request body.
-        invalid_handler (func) .
-
-    Side Effects:
-        Returns 400 and termiantes request processing.
+        invalid_handler (func).
     """
 
     try:
         ciphertext = body['ciphertext']
     except KeyError as error:
-        return abort(400, 'malformed body, expecting ciphertext key.')
+        return invalid_handler('malformed body, expecting ciphertext key.')
 
     if (type(ciphertext) is not int):
-        return abort(400, 'malformed body, expecting int ciphertext.')
+        return invalid_handler('malformed body, expecting int ciphertext.')
     return ciphertext
