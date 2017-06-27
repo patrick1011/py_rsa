@@ -1,15 +1,16 @@
 from flask import abort
 
 
-def validate_ciphertext(body):
+def validate_ciphertext(body, invalid_handler):
     """Validates incoming request body to ensure well-formed ciphertext.
 
-    Returns 400 if:
+    Calls invalid_handler if:
         1. Request body doesn't have 'ciphertext' key.
         2. Ciphertext is not type int.
 
     Args:
-        (dict) request body.
+        body (dict): Request body.
+        invalid_handler (func) .
 
     Side Effects:
         Returns 400 and termiantes request processing.
