@@ -1,10 +1,10 @@
-from src.key_generator.keys import gen_keys
-from src.key_generator.log_keys import log_keys
-from src.key_generator.primes import gen_prime
+from key_generator.keys import EncryptionScheme
+from key_generator.log_keys import log_keys
+from key_generator.primes import gen_prime
 
 
 def main():
-    """Generates keys for use with RSA encryption scheme.
+    """Generates keys for use with RSA encryption scheme and logs to termianl.
 
     Run this file as a module using:
 
@@ -14,7 +14,7 @@ def main():
     Textbook for Students and Practitioners by Christof Paar, Jan Pelzl,
     Bart Preneel (ISBN: 8601406549616).
 
-    Primes are 512 bit.
+    Uses 512 bit primes.
 
     Side Effects:
         Prints public and private exponents and modulus to console.  To
@@ -22,11 +22,15 @@ def main():
         into server/settings/py
     """
 
-    p, q = gen_prime(), gen_prime()
+    p = gen_prime(size=512)
+    q = gen_prime(size=512)
 
-    public_exponent, private_exponent, modulus = gen_keys(p, q)
+    new_scheme = EncryptionScheme(prime_one=p,
+                                  prime_two=q)
 
-    log_keys(public_exponent, private_exponent, modulus)
+    log_keys(public_exponent=new_scheme.public_exponent,
+             private_exponent=new_scheme.private_exponent,
+             modulus=new_scheme.modulus)
 
 
 if __name__ == '__main__':

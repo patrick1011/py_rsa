@@ -1,7 +1,7 @@
 from random import randint
 
 
-def gen_prime(size=512, sec=1000):
+def gen_prime(size, sec=1000):
     """Generates prime by creating random number and checking primality
     with fermat test.
 
