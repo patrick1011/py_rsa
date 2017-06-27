@@ -13,10 +13,10 @@ def read_plaintext():
     """
 
     with open('client/plaintext_payload.txt') as plaintext:
-        return plaintext.read()
+        # return plaintext.read()
+        return 'hello world'
 
-
-def encrypt(message, public_exponent, modulus):
+def encrypt(plaintext, public_exponent, modulus):
     """Encrypts message using RSA encryption scheme:
 
     ciphertext = plaintext**PUBLIC_EXPONENT % MODULUS
@@ -30,9 +30,9 @@ def encrypt(message, public_exponent, modulus):
         Encrypted plaintext.
     """
 
-    int_message = int.from_bytes(message.encode(), 'big')
+    int_plaintext = int.from_bytes(plaintext.encode(), 'big')
 
-    ciphertext = pow(int_message, public_exponent, modulus)
+    ciphertext = pow(int_plaintext, public_exponent, modulus)
 
     return ciphertext
 

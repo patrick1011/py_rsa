@@ -15,7 +15,7 @@ class EncryptionScheme:
 
         phi = (prime_one - 1)*(prime_two - 1)
 
-        self.modulus = prime_one * prime_one
+        self.modulus = prime_one * prime_two
         self.public_exponent = self.gen_public(phi)
         self.private_exponent = self.gen_private(phi, self.public_exponent)
 
@@ -36,7 +36,7 @@ class EncryptionScheme:
                 return c
             c += 2
 
-    def gen_private(self, phi, public):
+    def gen_private(self, phi, public_exponent):
         """Generates private RSA exponent using extended_euclidian
 
         Args:
@@ -47,8 +47,11 @@ class EncryptionScheme:
             Public exponent
         """
 
-        private = self.extended_euclidian(phi, public)
-        return private if (private > 0) else private + phi
+        private_exponent = self.extended_euclidian(phi, public_exponent)
+
+        if (private_exponent > 0):
+            return private_exponent
+        return private_exponent + phi
 
     def extended_euclidian(self, a, b):
         """Extended euclidian algorithm

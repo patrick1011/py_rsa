@@ -23,9 +23,12 @@ def main():
 
     plaintext = read_plaintext()
 
-    ciphertext = encrypt(plaintext, PUBLIC_EXPONENT, MODULUS)
+    ciphertext = encrypt(plaintext=plaintext,
+                         public_exponent=PUBLIC_EXPONENT,
+                         modulus=MODULUS)
 
-    send(ciphertext, URI)
+    send(ciphertext=ciphertext,
+         uri=URI)
 
 if __name__ == '__main__':
     main()

@@ -13,7 +13,7 @@ def log_message(message):
     """
 
     with open('server/message_log.txt', 'a') as log:
-        line = '[' + str(datetime.datetime.now()) + '] ' + message + '\n'
+        line = ' '.join(['[', str(datetime.datetime.now()), ']', message, '\n'])
         log.write(line)
         log.close()
 
@@ -45,7 +45,7 @@ def decrypt(ciphertext, private_exponent, modulus, not_unicode_handler):
     try:
         plaintext_string = byte_plaintext.decode()
     except UnicodeDecodeError:
-        message = 'Plaintext not unicode, aborted decryption.'
+        message = 'Plaintext not unicode, message not logged.'
         return not_unicode_handler(message)
 
     return plaintext_string

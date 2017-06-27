@@ -4,7 +4,7 @@ from key_generator.primes import gen_prime
 
 
 def main():
-    """Generates keys for use with RSA encryption scheme and logs to termianl.
+    """Generates keys for use with RSA encryption scheme and logs to terminal.
 
     Run this file as a module using:
 
