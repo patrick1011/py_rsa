@@ -28,7 +28,7 @@ def test_keygen_makes_valid_keys():
                             modulus=scheme.modulus,
                             not_unicode_handler=fail_if_called)
 
-    # FIXME: have to do the below because python fills new_plaintext
+    # FIXME: have to do the below because decoding fills new_plaintext
     # with 'blank' unicode at the start of the string.  Doesn't effect
     # output when rendered on terminal but annoying.
     # Here new_plaintext = '\x00\x00\x00...00hello world'.
