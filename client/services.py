@@ -13,8 +13,7 @@ def read_plaintext():
     """
 
     with open('client/plaintext_payload.txt') as plaintext:
-        # return plaintext.read()
-        return 'hello world'
+        return plaintext.read()
 
 
 def encrypt(plaintext, public_exponent, modulus):
