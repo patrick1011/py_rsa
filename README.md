@@ -11,7 +11,7 @@ The project is inspired by the exposition of the RSA cryptosystem in  *'Understa
 
 ## Generating RSA keys
 
-Run the following to compute and print a set of RSA keys to the terminal:
+Run the following to log a set of RSA keys to the terminal:
 ```
 python -m key_generator.main
 ```
