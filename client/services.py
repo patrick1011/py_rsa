@@ -16,6 +16,7 @@ def read_plaintext():
         # return plaintext.read()
         return 'hello world'
 
+
 def encrypt(plaintext, public_exponent, modulus):
     """Encrypts message using RSA encryption scheme:
 
