@@ -34,7 +34,8 @@ def decrypt(ciphertext, private_exponent, modulus, not_unicode_handler):
         MODULUS (int): modulus used in encryption scheme.
 
     Returns:
-        (str) Decrypted plaintext.
+        if plaintext is decodable: (str) Decrypted plaintext
+        if plaintext is not decodable: not_unicode_handler()
     """
 
     int_plaintext = pow(ciphertext, private_exponent, modulus)
