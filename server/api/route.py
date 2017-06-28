@@ -33,7 +33,6 @@ def process_incoming_ciphertext():
     validated_ciphertext = validate(body=request_body,
                                     invalid_handler=abort_wrapper(400))
 
-    print(validated_ciphertext)
 
     plaintext = decrypt(ciphertext=validated_ciphertext,
                         private_exponent=PRIVATE_EXPONENT,
