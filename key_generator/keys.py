@@ -1,6 +1,3 @@
-from math import gcd
-
-
 class EncryptionScheme:
     def __init__(self, prime_one, prime_two):
         """Generates keys for RSA encryption
@@ -52,6 +49,17 @@ class EncryptionScheme:
         if (private_exponent > 0):
             return private_exponent
         return private_exponent + phi
+
+    def gcd(a, b):
+        """Calculate the Greatest Common Divisor of a and b.
+
+        Unless b==0, the result will have the same sign as b (so that when
+        b is divided by it, the result comes out positive).
+        """
+
+        while b:
+            a, b = b, a % b
+        return a
 
     def extended_euclidian(self, a, b):
         """Extended euclidian algorithm
