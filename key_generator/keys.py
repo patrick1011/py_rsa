@@ -1,13 +1,15 @@
 class EncryptionScheme:
     def __init__(self, prime_one, prime_two):
-        """Generates keys for RSA encryption
+        """Generates keys for RSA encryption.
 
         Args:
             prime_one (int): prime number
             prime_two (int): prime number
 
-        Returns:
-            Public and private exponents and modulus.
+        Instantiated class has attributes:
+            modulus (int) Scheme modulus.
+            public_exponent (int) Public exponent used to encrypt.
+            private_exponent (int) Private exponent used to decrypt.
         """
 
         phi = (prime_one - 1)*(prime_two - 1)
@@ -28,7 +30,7 @@ class EncryptionScheme:
 
         c = 3
         while True:
-            is_relative_prime = (gcd(c, phi) == 1)
+            is_relative_prime = (self.gcd(c, phi) == 1)
             if is_relative_prime:
                 return c
             c += 2
