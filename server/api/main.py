@@ -12,13 +12,13 @@ from flask import Flask
 
 from server.settings import PORT
 
-import server.api.helpers.error_handlers as error_handlers
-import server.api.route as routes
+from server.api.helpers.error_handlers import blueprint as error_handlers
+from server.api.route import blueprint as routes
 
 app = Flask(__name__)
 
-app.register_blueprint(error_handlers.blueprint)
-app.register_blueprint(routes.blueprint)
+app.register_blueprint(error_handlers)
+app.register_blueprint(routes)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=PORT)
